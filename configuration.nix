@@ -15,7 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "zeus"; # Define your hostname.
-  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.wireless.networks  = {
     "Incognito" = {         # SSID with spaces and/or special characters
       psk = "perfectfruit114";
