@@ -28,24 +28,24 @@ fi
 # --------------------------------------------------------------------------------------------
 
 sudo cp ./configuration.nix /etc/nixos/configuration.nix
-sudo cp ./wallpaper.jpeg /wallpaper.jpeg
-dconf load / < ./dconf
 sudo nixos-rebuild switch
 sudo nixos-collect-garbage
 
+sudo cp ./wallpaper.jpeg /wallpaper.jpeg
+dconf load / < ./dconf
+
 cd ~/.mozilla/firefox/*.default
-sudo rm -rf ./*
-sudo rm -rf ./.*
+sudo rm -rf ./* ./.*
 git init -b main
 git remote add origin "https://github.com/txtr/firefox_profile.git"
 git fetch
 git pull origin main
 
 cd ~/.config/google-chrome/Default
-rm -rf ./*
-rm -rf ./.*
+rm -rf ./* ./.*
 git init -b main
 git remote add origin "https://github.com/txtr/chromium_profile.git"
 git fetch
 git pull origin main
 
+reboot
