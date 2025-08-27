@@ -15,15 +15,19 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "zeus"; # Define your hostname.
-  # networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.networks  = {
+    "Incognito" = {         # SSID with spaces and/or special characters
+      psk = "perfectfruit114";
+    };
+  };
   
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
-  networking.wireless.networks."Incognito" = { psk = "perfectfruit114"; };
+  networking.networkmanager.enable = false;
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
