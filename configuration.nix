@@ -382,8 +382,4 @@
   #   theme = "robbyrussell";
   #   customPkgs = [ pkgs.nix-zsh-completions ];
   # };
-
-  
-  
-  
 }
