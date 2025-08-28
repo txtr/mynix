@@ -2,7 +2,7 @@
 
 sudo cp ./configuration.nix /etc/nixos/configuration.nix
 sudo nixos-rebuild switch
-sudo nix-collect-garbage # -d
+sudo nix-collect-garbage -d
 sudo nix-store --optimise
 
 sudo cp ./wallpaper.jpeg /wallpaper.jpeg
