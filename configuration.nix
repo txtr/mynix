@@ -98,7 +98,7 @@
   # MISC. HARDWARE
   #------------------------------------------------------------------------------------------------------------------------
   services.printing.enable = false; # Printing via CUPS
-  services.xserver.libinput.enable = false; # Touchpad via Synaptic
+  services.libinput.enable = false; # Touchpad via Synaptic
 
   #------------------------------------------------------------------------------------------------------------------------
   # LOCALE
@@ -266,8 +266,6 @@
     favorite-apps=@as []
   '';
 
-  
-
   #------------------------------------------------------------------------------------------------------------------------
   # APPLICATION MANAGEMENT
   #------------------------------------------------------------------------------------------------------------------------
@@ -300,6 +298,7 @@
   # PACKAGES
   #------------------------------------------------------------------------------------------------------------------------
   environment.systemPackages = with pkgs; [
+    gnome-console
     nano
     btop
     curl
@@ -314,72 +313,14 @@
 
   services.xserver.excludePackages = [ pkgs.xterm ];
   
-  # environment.gnome.excludePackages = (with pkgs; [
-  #   atomix
-  #   cheese
-  #   epiphany
-  #   evince
-  #   geary
-  #   gedit
-  #   gnome-characters
-  #   gnome-music
-  #   gnome-photos
-  #   gnome-tour
-  #   hitori
-  #   iagno
-  #   tali
-  #   totem
-  #   gnome-contacts
-  #   gnome-weather
-  #   gnome-clocks
-  #   gnome-maps
-  #   gnome-music
-  #   snapshot
-  #   simple-scan
-  #   yelp
-  #   gnome-tour
-  #   gnome-calculator
-  #   gnome-connections
-  #   gnome-font-viewer
-  #   gnome-logs
-  #   gnome-disk-utility
-  #   gnome-remote-desktop
-  #   gnome-text-editor
-  #   gnome-initial-setup
-  #   baobab
-  #   decibels
-  #   evolution
-  #   gnome-calendar
-  #   loupe
-  #   seahorse
-  #   gnome-system-monitor
-  #   gnome-browser-connector
-  # ]);
-
-  # fileSystems = {
-  #   "/writable-overlay" = {
-  #     overlay = {
-  #       lowerdir = [ writableOverlayLowerdir ];
-  #       upperdir = "/.rw-writable-overlay/upper";
-  #       workdir = "/.rw-writable-overlay/work";
-  #     };
-  #     # Mount the writable overlay in the initrd.
-  #     neededForBoot = true;
-  #   };
-  #   "/readonly-overlay".overlay.lowerdir = [
-  #     writableOverlayLowerdir
-  #     writableOverlayLowerdir2
-  #   ];
-  # };
-
-  # programs.zsh.ohMyZsh = {
-  #   enable = true;
-  #   plugins = [
-  #     "git"
-  #     "python"
-  #     "man"
-  #   ];
-  #   theme = "robbyrussell";
-  #   customPkgs = [ pkgs.nix-zsh-completions ];
-  # };
+  programs.zsh.ohMyZsh = {
+    enable = true;
+    plugins = [
+      "git"
+      "python"
+      "man"
+    ];
+    theme = "robbyrussell";
+    customPkgs = [ pkgs.nix-zsh-completions ];
+  };
 }
