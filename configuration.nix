@@ -315,9 +315,9 @@
 
   programs.firefox.enable = true; # Firefox
 
-  services.xserver.excludePackages = [ pkgs.xterm ];
+  services.xserver.excludePackages = [ pkgs.xterm ]; # XTerm Console Application
   
-  documentation.nixos.enable = false; # Gnome's NixOS Manual
+  documentation.nixos.enable = false; # Gnome's NixOS Manual Application
   
   programs.zsh = {
     enable = true;  
@@ -336,6 +336,9 @@
     };
   };
 
+  #------------------------------------------------------------------------------------------------------------------------
+  # HELPERS
+  #------------------------------------------------------------------------------------------------------------------------
   environment.etc."current-system-packages".text =
     let
       packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
