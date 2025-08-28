@@ -1,39 +1,110 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# Help is available in the configuration.nix(5) man page and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { lib, config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
-  # Bootloader.
+
+  #------------------------------------------------------------------------------------------------------------------------
+  # NIXOS DEFAULTS 
+  #------------------------------------------------------------------------------------------------------------------------
+  
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "25.05"; # Did you read the comment?
+
+
+  
+
+  #------------------------------------------------------------------------------------------------------------------------
+  # Bootloader
+  #------------------------------------------------------------------------------------------------------------------------
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "zeus"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.wireless.networks  = {
-    "Incognito" = {         # SSID with spaces and/or special characters
-      psk = "perfectfruit114";
-    };
-  };
+
+  #------------------------------------------------------------------------------------------------------------------------
+  # SOUND
+  #------------------------------------------------------------------------------------------------------------------------
+  services.pulseaudio.enable = false; # PulseAudio sound server
+
+  services.pipewire.enable = true; # PipeWire service
+  services.pipewire.alsa.enable = true;
+  services.pipewire.alsa.support32Bit = true;
+  services.pipewire.pulse.enable = true;
+  services.pipewire.jack.enable = false;
+
+  ## RealtimeKit system service, which hands out realtime scheduling priority to user processes on demand. For example,
+  ## PulseAudio and PipeWire use this to acquire realtime priority.
+  security.rtkit.enable = true; 
   
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  #------------------------------------------------------------------------------------------------------------------------
+  # VIDEO
+  #------------------------------------------------------------------------------------------------------------------------
+  hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
+  
+  hardware.graphics.extraPackages =  with pkgs; [
+    rocmPackages.clr.icd # OpenCL
+    pkgs.amdvlk # Vulkan
+  ];
+  hardware.graphics.extraPackages32 = [ pkgs.driversi686Linux.amdvlk ]; # Vulkan support for 32-bit applications
 
-  # Enable networking
-  networking.networkmanager.enable = false;
+  environment.variables.ROC_ENABLE_PRE_VEGA = "1"; # Reenable OpenCL on Polaris-based cards above ROCm 4.5
+  environment.variables.AMD_VULKAN_ICD = "RADV"; # Force RADV
 
-  # Set your time zone.
-  time.timeZone = "America/Chicago";
+  services.xserver.videoDrivers = [
+    # Free AMD Video Drivers
+    "amdgpu"
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+    # # Propreitary AMD Video Drivers
+    # "amdgpu-pro"
+  ];
+
+  #------------------------------------------------------------------------------------------------------------------------
+  # NETWORKING
+  #------------------------------------------------------------------------------------------------------------------------
+  networking.hostName = "zeus";
+
+  networking.enableIPv6 = false; # IPv6
+
+  
+  networking.networkmanager.enable = true; # NetworkManager
+  networking.networkmanager.wifi.backend = "wpa_supplicant";
+
+  #------------------------------------------------------------------------------------------------------------------------
+  # WIFI
+  #------------------------------------------------------------------------------------------------------------------------
+  networking.wireless.enable = false;  # wpa_supplicant
+
+  networking.wireless.networks."Incognito".psk = "perfectfruit114"; # SSID and PSK
+
+  #------------------------------------------------------------------------------------------------------------------------
+  # BLUETOOTH
+  #------------------------------------------------------------------------------------------------------------------------
+  hardware.bluetooth.enable = true;
+  systemd.services.bluetooth.enable = lib.mkForce false;
+  
+  #------------------------------------------------------------------------------------------------------------------------
+  # MISC. HARDWARE
+  #------------------------------------------------------------------------------------------------------------------------
+  services.printing.enable = false; # Printing via CUPS
+  services.xserver.libinput.enable = false; # Touchpad via Synaptic
+
+  #------------------------------------------------------------------------------------------------------------------------
+  # LOCALE
+  #------------------------------------------------------------------------------------------------------------------------
+  time.timeZone = "America/Chicago"; # Time zone
+  i18n.defaultLocale = "en_US.UTF-8"; # Internationalisation
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
@@ -47,12 +118,40 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  #------------------------------------------------------------------------------------------------------------------------
+  # AUTO UPGRADE
+  #------------------------------------------------------------------------------------------------------------------------
+  system.autoUpgrade.channel = "https://channels.nixos.org/nixos-25.05";
+  system.autoUpgrade.enable = false;
+  system.autoUpgrade.allowReboot = false;
+
+  #------------------------------------------------------------------------------------------------------------------------
+  # USERS
+  #------------------------------------------------------------------------------------------------------------------------
+  users.users.txtr = {
+    isNormalUser = true;
+    home = "/home";
+    description = "txtr";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+
+    packages = with pkgs; [
+    ];
+
+    openssh.authorizedKeys.keys = [
+    ];
+  };
+
+  
+
+
+  #------------------------------------------------------------------------------------------------------------------------
+  # X11
+  #------------------------------------------------------------------------------------------------------------------------
+  services.xserver.enable = true; # X11 windowing system
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -60,45 +159,146 @@
     variant = "";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = false;
 
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+  #------------------------------------------------------------------------------------------------------------------------
+  # GNOME
+  #------------------------------------------------------------------------------------------------------------------------
+  services.xserver.displayManager.gdm.enable = true; # GNU Desktop Manager
+  services.xserver.desktopManager.gnome.enable = true; # Gnome Desktop Environment
+  services.gnome.core-apps.enable = false; # Gnome Core Apps
+  services.gnome.games.enable = false; # Gnome Game Apps
+  services.gnome.localsearch.enable = false; # Indexing via localsearch
+  services.gnome.tinysparql.enable = false; # Indexing via tinysparql
+  services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
+    [org/freedesktop/tracker/miner/files]
+    index-recursive-directories=@as []
+    index-single-directories=@as []
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
+    [org/gnome/Console]
+    last-window-maximised=true
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+    [org/gnome/desktop/background]
+    color-shading-type='solid'
+    picture-options='zoom'
+    picture-uri='file:///wallpaper.jpeg'
+    picture-uri-dark='file:///wallpaper.jpeg'
+    primary-color='#555555'
+    secondary-color='#000000'
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.txtr = {
-    isNormalUser = true;
-    description = "txtr";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    ];
-  };
+    [org/gnome/desktop/break-reminders/eyesight]
+    play-sound=true
 
-  # Install firefox.
-  programs.firefox.enable = true;
+    [org/gnome/desktop/break-reminders/movement]
+    duration-seconds=uint32 300
+    interval-seconds=uint32 1800
+    play-sound=true
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+    [org/gnome/desktop/datetime]
+    automatic-timezone=false
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+    [org/gnome/desktop/input-sources]
+    sources=[('xkb', 'us')]
+    xkb-options=@as []
+
+    [org/gnome/desktop/interface]
+    clock-show-seconds=false
+    clock-show-weekday=true
+    color-scheme='prefer-dark'
+    enable-animations=false
+    enable-hot-corners=false
+
+    [org/gnome/desktop/notifications]
+    show-in-lock-screen=false
+
+    [org/gnome/desktop/peripherals/keyboard]
+    numlock-state=true
+
+    [org/gnome/desktop/peripherals/mouse]
+    accel-profile='flat'
+
+    [org/gnome/desktop/peripherals/touchpad]
+    two-finger-scrolling-enabled=true
+
+    [org/gnome/desktop/privacy]
+    old-files-age=uint32 0
+    remember-recent-files=false
+    remove-old-temp-files=true
+    remove-old-trash-files=true
+
+    [org/gnome/desktop/screen-time-limits]
+    daily-limit-enabled=false
+    history-enabled=false
+
+    [org/gnome/desktop/screensaver]
+    color-shading-type='solid'
+    lock-enabled=false
+    picture-options='zoom'
+    primary-color='#000000'
+    secondary-color='#000000'
+
+    [org/gnome/desktop/search-providers]
+    disable-external=true
+
+    [org/gnome/desktop/session]
+    idle-delay=uint32 60
+
+    [org/gnome/desktop/sound]
+    event-sounds=false
+
+    [org/gnome/evolution-data-server]
+    migrated=true
+
+    [org/gnome/mutter]
+    edge-tiling=false
+
+    [org/gnome/nautilus/preferences]
+    default-folder-viewer='icon-view'
+    migrated-gtk-settings=true
+    search-filter-time-type='last_modified'
+
+    [org/gnome/settings-daemon/plugins/color]
+    night-light-schedule-automatic=false
+
+    [org/gnome/settings-daemon/plugins/power]
+    sleep-inactive-ac-type='nothing'
+
+    [org/gnome/shell]
+    favorite-apps=@as []
+  '';
+
+  
+
+  #------------------------------------------------------------------------------------------------------------------------
+  # APPLICATION MANAGEMENT
+  #------------------------------------------------------------------------------------------------------------------------
+  nixpkgs.config.allowUnfree = true; # UNFREE packages
+  
+  programs.appimage.enable = true; # Appimage
+  programs.appimage.binfmt = true;
+
+  services.flatpak.enable = true; # Flatpak
+  
+
+  
+
+  #------------------------------------------------------------------------------------------------------------------------
+  # SSH
+  #------------------------------------------------------------------------------------------------------------------------
+  services.openssh.enable = true; # OpenSSH
+  services.openssh.settings.PasswordAuthentication = true; # Allow password authentication
+
+  #------------------------------------------------------------------------------------------------------------------------
+  # FIREWALL
+  #------------------------------------------------------------------------------------------------------------------------
+  networking.firewall.enable = false; # Firewall
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+
+  #------------------------------------------------------------------------------------------------------------------------
+  # PACKAGES
+  #------------------------------------------------------------------------------------------------------------------------
   environment.systemPackages = with pkgs; [
     nano
     btop
@@ -110,76 +310,80 @@
     google-chrome
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
-  
-  environment.gnome.excludePackages = (with pkgs; [
-    atomix
-    cheese
-    epiphany
-    evince
-    geary
-    gedit
-    gnome-characters
-    gnome-music
-    gnome-photos
-    gnome-tour
-    hitori
-    iagno
-    tali
-    totem
-    gnome-contacts
-    gnome-weather
-    gnome-clocks
-    gnome-maps
-    gnome-music
-    snapshot
-    simple-scan
-    yelp
-    gnome-tour
-    gnome-calculator
-    gnome-connections
-    gnome-font-viewer
-    gnome-logs
-    gnome-disk-utility
-    gnome-remote-desktop
-    gnome-text-editor
-    gnome-initial-setup
-    baobab
-    decibels
-    evolution
-    gnome-calendar
-    loupe
-    seahorse
-    gnome-system-monitor
-    gnome-browser-connector
-  ]);
+  programs.firefox.enable = true; # Firefox
 
   services.xserver.excludePackages = [ pkgs.xterm ];
   
-  systemd.services.bluetooth.enable = lib.mkForce false;
+  # environment.gnome.excludePackages = (with pkgs; [
+  #   atomix
+  #   cheese
+  #   epiphany
+  #   evince
+  #   geary
+  #   gedit
+  #   gnome-characters
+  #   gnome-music
+  #   gnome-photos
+  #   gnome-tour
+  #   hitori
+  #   iagno
+  #   tali
+  #   totem
+  #   gnome-contacts
+  #   gnome-weather
+  #   gnome-clocks
+  #   gnome-maps
+  #   gnome-music
+  #   snapshot
+  #   simple-scan
+  #   yelp
+  #   gnome-tour
+  #   gnome-calculator
+  #   gnome-connections
+  #   gnome-font-viewer
+  #   gnome-logs
+  #   gnome-disk-utility
+  #   gnome-remote-desktop
+  #   gnome-text-editor
+  #   gnome-initial-setup
+  #   baobab
+  #   decibels
+  #   evolution
+  #   gnome-calendar
+  #   loupe
+  #   seahorse
+  #   gnome-system-monitor
+  #   gnome-browser-connector
+  # ]);
+
+  # fileSystems = {
+  #   "/writable-overlay" = {
+  #     overlay = {
+  #       lowerdir = [ writableOverlayLowerdir ];
+  #       upperdir = "/.rw-writable-overlay/upper";
+  #       workdir = "/.rw-writable-overlay/work";
+  #     };
+  #     # Mount the writable overlay in the initrd.
+  #     neededForBoot = true;
+  #   };
+  #   "/readonly-overlay".overlay.lowerdir = [
+  #     writableOverlayLowerdir
+  #     writableOverlayLowerdir2
+  #   ];
+  # };
+
+  # programs.zsh.ohMyZsh = {
+  #   enable = true;
+  #   plugins = [
+  #     "git"
+  #     "python"
+  #     "man"
+  #   ];
+  #   theme = "robbyrussell";
+  #   customPkgs = [ pkgs.nix-zsh-completions ];
+  # };
+
+  
+  
+  
 }
