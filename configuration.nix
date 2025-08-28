@@ -131,7 +131,7 @@
   #------------------------------------------------------------------------------------------------------------------------
   users.users.txtr = {
     isNormalUser = true;
-    home = "/home";
+    home = "/home/txtr";
     description = "txtr";
     extraGroups = [
       "networkmanager"
@@ -143,6 +143,8 @@
 
     openssh.authorizedKeys.keys = [
     ];
+
+    shell = pkgs.zsh;
   };
 
   
@@ -316,7 +318,7 @@
   services.xserver.excludePackages = [ pkgs.xterm ];
   
   documentation.nixos.enable = false; # Gnome's NixOS Manual
-
+  
   programs.zsh = {
     enable = true;  
     ohMyZsh = {
