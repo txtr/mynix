@@ -265,7 +265,7 @@
     [org/gnome/shell]
     favorite-apps=@as []
   '';
-
+  environment.gnome.excludePackages = with pkgs; [ gnome-tour ];
   #------------------------------------------------------------------------------------------------------------------------
   # APPLICATION MANAGEMENT
   #------------------------------------------------------------------------------------------------------------------------
@@ -299,6 +299,8 @@
   #------------------------------------------------------------------------------------------------------------------------
   environment.systemPackages = with pkgs; [
     gnome-console
+    nautilus
+    sushi
     nano
     btop
     curl
@@ -313,14 +315,30 @@
 
   services.xserver.excludePackages = [ pkgs.xterm ];
   
-  programs.zsh.ohMyZsh = {
-    enable = true;
-    plugins = [
-      "git"
-      "python"
-      "man"
-    ];
-    theme = "robbyrussell";
-    customPkgs = [ pkgs.nix-zsh-completions ];
+  documentation.nixos.enable = false; # Gnome's NixOS Manual
+
+  programs.zsh = {
+    enable = true;  
+    ohMyZsh = {
+      enable = true;
+      plugins = [
+        "sudo"
+        "systemadmin"
+        "vi-mode"
+        "git"
+        "python"
+        "man"
+      ];
+      theme = "robbyrussell";
+      customPkgs = [ pkgs.nix-zsh-completions ];
+    };
   };
+
+  environment.etc."current-system-packages".text =
+    let
+      packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
+      sortedUnique = builtins.sort builtins.lessThan (pkgs.lib.lists.unique packages);
+      formatted = builtins.concatStringsSep "\n" sortedUnique;
+    in
+      formatted;
 }
