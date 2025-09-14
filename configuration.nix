@@ -205,8 +205,6 @@
   # PACKAGES
   #------------------------------------------------------------------------------------------------------------------------
   environment.systemPackages = with pkgs; [
-    zsh-powerlevel10k
-    meslo-lgs-nf
     gnome-console
     nautilus
     sushi
@@ -217,8 +215,8 @@
     aria2
     git
     rclone
-    vlc
     google-chrome
+    alacritty
   ];
 
   programs.firefox.enable = true; # Firefox
@@ -226,31 +224,26 @@
   services.xserver.excludePackages = [ pkgs.xterm ]; # XTerm Console Application
   
   documentation.nixos.enable = false; # Gnome's NixOS Manual Application
-
+  
   programs.zsh = {
     enable = true;
-    enableCompletion = true;
     enableBashCompletion = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
-    histSize = 10000;
     ohMyZsh = {
       enable = true;
       plugins = [
         "sudo"
-        "zsh-syntax-highlighting"
-        "zsh-autosuggestions"
-        "zsh-history-substring-search"
         "systemadmin"
         "vi-mode"
         "git"
         "python"
         "man"
       ];
-      customPkgs = [ pkgs.nix-zsh-completions ];
+      theme = "robbyrussell";
+      theme = "powerlevel10k/powerlevel10k";
     };
   };
-  users.defaultUserShell = pkgs.zsh;
 
   #------------------------------------------------------------------------------------------------------------------------
   # HELPERS
