@@ -215,8 +215,9 @@
     aria2
     git
     rclone
-    google-chrome
-    alacritty
+    vlc
+    # google-chrome
+    # alacritty
   ];
 
   programs.firefox.enable = true; # Firefox
