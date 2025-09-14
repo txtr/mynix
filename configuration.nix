@@ -229,9 +229,6 @@
   documentation.nixos.enable = false; # Gnome's NixOS Manual Application
 
   environment.etc."powerlevel10k/p10k.zsh".source = ./p10k.zsh;
-  environment.shellAliases = {
-    nshell = "nix-shell --run $SHELL"
-  };
   programs.zsh = {
     enable = true;
     enableCompletion = true;
