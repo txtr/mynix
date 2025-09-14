@@ -218,8 +218,7 @@
     git
     rclone
     vlc
-    # google-chrome
-    # alacritty
+    google-chrome
   ];
 
   programs.firefox.enable = true; # Firefox
@@ -228,7 +227,6 @@
   
   documentation.nixos.enable = false; # Gnome's NixOS Manual Application
 
-  environment.etc."powerlevel10k/p10k.zsh".source = ./p10k.zsh;
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -250,7 +248,6 @@
     };
   };
   users.defaultUserShell = pkgs.zsh;
-  system.userActivationScripts.zshrc = "touch .zshrc";
   environment.shells = pkgs.zsh;
 
   #------------------------------------------------------------------------------------------------------------------------
