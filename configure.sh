@@ -6,7 +6,6 @@ sudo nix-collect-garbage -d
 sudo nix-store --optimise
 
 
-cp ./zshrc ~/.zshrc
 sudo cp ./wallpaper.jpeg /wallpaper.jpeg
 
 dconf load / < ./dconf
