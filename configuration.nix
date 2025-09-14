@@ -236,14 +236,7 @@
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
     histSize = 10000;
-    promptInit = ''
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-      source /etc/powerlevel10k/p10k.zsh
-
-      if [[ -r "''${XDG_CACHE_HOME:-''$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-        source "''${XDG_CACHE_HOME:-''$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-      fi
-    '';
+    prompInit = ''source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme'';
     ohMyZsh = {
       enable = true;
       plugins = [
@@ -254,17 +247,12 @@
         "python"
         "man"
       ];
-      theme = "powerlevel10k/powerlevel10k";
       customPkgs = [ pkgs.nix-zsh-completions ];
     };
   };
   users.defaultUserShell = pkgs.zsh;
-  system.userActivationScripts.zshrc = "touch .zshrc"; # to avoid being prompted to generate the config for first time
-  environment.shells = pkgs.zsh; # https://wiki.nixos.org/wiki/Zsh#GDM_does_not_show_user_when_zsh_is_the_default_shell
-  environment.loginShellInit = ''
-    # equivalent to .profile
-    # https://search.nixos.org/options?show=environment.loginShellInit
-  '';
+  system.userActivationScripts.zshrc = "touch .zshrc";
+  environment.shells = pkgs.zsh;
 
   #------------------------------------------------------------------------------------------------------------------------
   # HELPERS
