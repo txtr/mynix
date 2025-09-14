@@ -197,10 +197,6 @@
   #------------------------------------------------------------------------------------------------------------------------
   networking.firewall.enable = false; # Firewall
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-
   #------------------------------------------------------------------------------------------------------------------------
   # PACKAGES
   #------------------------------------------------------------------------------------------------------------------------
@@ -216,10 +212,8 @@
     git
     rclone
     google-chrome
-    alacritty
+    vlc
   ];
-
-  programs.firefox.enable = true; # Firefox
 
   services.xserver.excludePackages = [ pkgs.xterm ]; # XTerm Console Application
   
@@ -240,7 +234,7 @@
         "python"
         "man"
       ];
-      theme = "powerlevel10k/powerlevel10k";
+      theme = "robbyrussell";
     };
   };
 
