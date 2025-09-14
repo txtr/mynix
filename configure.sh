@@ -7,9 +7,6 @@ sudo nix-store --optimise
 
 
 cp ./zshrc ~/.zshrc
-cp ./p10k.zsh ~/.p10k.zsh
-cp ./alacritty.toml ~/.alacritty.toml
-cp ./config.zsh ~/.config.zsh
 sudo cp ./wallpaper.jpeg /wallpaper.jpeg
 
 dconf load / < ./dconf
