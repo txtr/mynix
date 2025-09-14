@@ -240,7 +240,6 @@
         "python"
         "man"
       ];
-      theme = "robbyrussell";
       theme = "powerlevel10k/powerlevel10k";
     };
   };
