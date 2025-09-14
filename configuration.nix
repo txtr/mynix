@@ -238,6 +238,9 @@
       enable = true;
       plugins = [
         "sudo"
+        "zsh-syntax-highlighting"
+        "zsh-autosuggestions"
+        "zsh-history-substring-search"
         "systemadmin"
         "vi-mode"
         "git"
