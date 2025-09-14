@@ -13,12 +13,12 @@ sudo cp ./wallpaper.jpeg /wallpaper.jpeg
 
 dconf load / < ./dconf
 
-google-chrome-stable
-firefox
+# google-chrome-stable
+# firefox
 
-echo "Close Firefox and Google Chrome. Press any key to continue..."
-read -n 1 -s
-echo "You pressed a key! Continuing..."
+# echo "Close Firefox and Google Chrome. Press any key to continue..."
+# read -n 1 -s
+# echo "You pressed a key! Continuing..."
 
 # cd ~/.mozilla/firefox/*.default
 # sudo rm -rf ./* ./.*
