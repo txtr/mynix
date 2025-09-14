@@ -205,6 +205,7 @@
   # PACKAGES
   #------------------------------------------------------------------------------------------------------------------------
   environment.systemPackages = with pkgs; [
+    gnome-console
     nautilus
     sushi
     nano
