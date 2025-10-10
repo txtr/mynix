@@ -1,5 +1,12 @@
 #!/bin/sh
 
+if ping -q -c 1 -W 2 8.8.8.8 >/dev/null; then
+    echo "Internet connection detected."
+else
+    echo "No internet connection. Exiting..."
+    exit 1
+fi
+
 read -p "Enter hostname for this system: " new_hostname
 echo "networking.hostName = \"$new_hostname\";" >> configuration.nix
 
