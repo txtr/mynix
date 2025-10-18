@@ -3,16 +3,13 @@
 # Exit immediately on error
 set -e
 
-# Function to check internet connection
-check_internet() {
-    echo "Checking internet connection..."
-    if ping -q -c 1 -W 2 8.8.8.8 >/dev/null; then
-        echo "Internet connection detected."
-    else
-        echo "No internet connection. Exiting..."
-        exit 1
-    fi
-}
+echo "Checking internet connection..."
+if ping -q -c 1 -W 2 8.8.8.8 >/dev/null; then
+    echo "Internet connection detected."
+else
+    echo "No internet connection. Exiting..."
+    exit 1
+fi
 
 sudo cp ./configuration.nix /etc/nixos/configuration.nix
 sudo nixos-rebuild switch
