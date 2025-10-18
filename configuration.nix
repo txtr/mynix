@@ -193,6 +193,7 @@
     aria2
     git
     rclone
+    ffmpeg-full
     google-chrome
     vlc
   ];
