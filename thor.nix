@@ -1,4 +1,10 @@
+{ lib, config, pkgs, ... }:
 
+{
+  imports = [
+    ./configuration.nix
+  ];
+  
   hardware.graphics.extraPackages =  with pkgs; [
     rocmPackages.clr.icd # OpenCL
     pkgs.amdvlk # Vulkan
@@ -15,3 +21,4 @@
     # # Propreitary AMD Video Drivers
     # "amdgpu-pro"
   ];
+}
