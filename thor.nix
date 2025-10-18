@@ -4,7 +4,7 @@
   imports = [
     ./configuration.nix
   ];
-  
+  networking.hostName = "thor"
   hardware.graphics.extraPackages =  with pkgs; [
     rocmPackages.clr.icd # OpenCL
     pkgs.amdvlk # Vulkan
