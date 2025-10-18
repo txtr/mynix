@@ -15,3 +15,4 @@ fi
 sudo cp ./wallpaper.jpeg /wallpaper.jpeg
 
 dconf load / < ./dconf
+cp ./.zshrc ~/.zshrc
