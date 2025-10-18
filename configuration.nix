@@ -186,7 +186,7 @@
     gnome-console
     nautilus
     sushi
-    nano
+    micro
     btop
     curl
     wget
@@ -196,6 +196,8 @@
     ffmpeg-full
     google-chrome
     vlc
+    python3Full
+    vscode
   ];
 
   services.xserver.excludePackages = [ pkgs.xterm ]; # XTerm Console Application
