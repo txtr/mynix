@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./configuration.nix
+    /etc/nixos/configuration.nix
   ];
 
   networking.hostName = "thor";
