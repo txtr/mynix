@@ -5,6 +5,9 @@ index-single-directories=@as []
 [org/gnome/Console]
 last-window-maximised=true
 
+[org/gnome/desktop/app-folders]
+folder-children=[ 'YaST', 'Pardus']
+
 [org/gnome/desktop/background]
 color-shading-type='solid'
 picture-options='zoom'
