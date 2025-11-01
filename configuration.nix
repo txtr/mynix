@@ -1,6 +1,6 @@
 # Help is available in the configuration.nix(5) man page and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, makeDesktopItem, ... }:
 
 {
   
@@ -158,21 +158,6 @@
   
   environment.gnome.excludePackages = with pkgs; [ gnome-tour ];
 
-  pkgs.makeDesktopItem {
-    name = "chromium-incognito";
-    desktopName = "Chromium (Incognito)";
-    genericName = "Web Browser";
-    comment = "Access the Internet in Incognito Mode";
-    icon = "chromium";
-    exec = "${chromium}/bin/chromium --incognito %U";
-    terminal = false;
-    type = "Application";
-    categories = [ "Network" "WebBrowser" ];
-    mimeType = [ "text/html" "x-scheme-handler/http" "x-scheme-handler/https" ];
-    startupWMClass = "chromium-browser";
-    keywords = [ "internet" "web" "browser" "incognito" "private" ];
-  }
-
   #------------------------------------------------------------------------------------------------------------------------
   # APPLICATION MANAGEMENT
   #------------------------------------------------------------------------------------------------------------------------
@@ -200,6 +185,25 @@
   #------------------------------------------------------------------------------------------------------------------------
   # PACKAGES
   #------------------------------------------------------------------------------------------------------------------------
+
+  makeDesktopItem {
+    name = "chromium-incognito";
+    desktopName = "Chromium (Incognito)";
+    genericName = "Web Browser";
+    noDisplay = false;
+    comment = "Browse the web in incognito mode";
+    icon = "chromium";
+    dbusActivatable = true;
+    tryExec = "chromium";
+    exec = "chromium --incognito";
+    terminal = false;
+    mimeTypes = [ "application/pdf" "application/rdf+xml" "application/rss+xml" "application/xhtml+xml" "application/xhtml_xml" "application/xml" "image/gif" "image/jpeg" "image/png" "image/webp" "text/html" "text/xml" "x-scheme-handler/http" "x-scheme-handler/https" "x-scheme-handler/webcal" "x-scheme-handler/mailto" "x-scheme-handler/about" "x-scheme-handler/unknown" ];
+    categories = [ "Network" "WebBrowser" ];
+    keywords = [ "internet" "web" "browser" "incognito" "private" ];
+    startupNotify = false;
+    startupWMClass = "chromium-browser";
+  }
+
   environment.systemPackages = with pkgs; [
     gnome-console
     nautilus
