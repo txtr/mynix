@@ -158,31 +158,6 @@
   
   environment.gnome.excludePackages = with pkgs; [ gnome-tour ];
 
-  nixpkgs.overlays = [
-      (self: super: {
-        chromiumIncognitoDesktopItem = super.stdenv.mkDerivation rec {
-          name = "chromium-incognito-desktop-item";
-          dontBuild = true;
-          unpackPhase = "true";
-  
-          desktopItem = super.makeDesktopItem {
-            name = "chromium-incognito";
-            exec = "${super.chromium}/bin/chromium --incognito";
-            genericName = "Chromium (Incognito)";
-            categories = "Application;Network;WebBrowser;";
-            desktopName = "Chromium (Incognito)";
-            icon = "chromium";
-            mimeType = super.lib.concatStringsSep ";" [ "application/pdf" "application/rdf+xml" "application/rss+xml" "application/xhtml+xml" "application/xhtml_xml" "application/xml" "image/gif" "image/jpeg" "image/png" "image/webp" "text/html" "text/xml" "x-scheme-handler/http" "x-scheme-handler/https" "x-scheme-handler/webcal" "x-scheme-handler/mailto" "x-scheme-handler/about" "x-scheme-handler/unknown" ];
-          };
-  
-          installPhase = ''
-            mkdir -p $out/share
-            cp -r ${desktopItem}/share/applications $out/share
-          '';
-        };
-      })
-    ];
-
   #------------------------------------------------------------------------------------------------------------------------
   # APPLICATION MANAGEMENT
   #------------------------------------------------------------------------------------------------------------------------
