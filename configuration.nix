@@ -157,6 +157,22 @@
   services.gnome.tinysparql.enable = false; # Indexing via tinysparql
   
   environment.gnome.excludePackages = with pkgs; [ gnome-tour ];
+
+  pkgs.makeDesktopItem {
+    name = "chromium-incognito";
+    desktopName = "Chromium (Incognito)";
+    genericName = "Web Browser";
+    comment = "Access the Internet in Incognito Mode";
+    icon = "chromium";
+    exec = "${chromium}/bin/chromium --incognito %U";
+    terminal = false;
+    type = "Application";
+    categories = [ "Network" "WebBrowser" ];
+    mimeType = [ "text/html" "x-scheme-handler/http" "x-scheme-handler/https" ];
+    startupWMClass = "chromium-browser";
+    keywords = [ "internet" "web" "browser" "incognito" "private" ];
+  }
+
   #------------------------------------------------------------------------------------------------------------------------
   # APPLICATION MANAGEMENT
   #------------------------------------------------------------------------------------------------------------------------
