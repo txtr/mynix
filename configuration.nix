@@ -186,24 +186,6 @@
   # PACKAGES
   #------------------------------------------------------------------------------------------------------------------------
 
-  makeDesktopItem {
-    name = "chromium-incognito";
-    desktopName = "Chromium (Incognito)";
-    genericName = "Web Browser";
-    noDisplay = false;
-    comment = "Browse the web in incognito mode";
-    icon = "chromium";
-    dbusActivatable = true;
-    tryExec = "chromium";
-    exec = "chromium --incognito";
-    terminal = false;
-    mimeTypes = [ "application/pdf" "application/rdf+xml" "application/rss+xml" "application/xhtml+xml" "application/xhtml_xml" "application/xml" "image/gif" "image/jpeg" "image/png" "image/webp" "text/html" "text/xml" "x-scheme-handler/http" "x-scheme-handler/https" "x-scheme-handler/webcal" "x-scheme-handler/mailto" "x-scheme-handler/about" "x-scheme-handler/unknown" ];
-    categories = [ "Network" "WebBrowser" ];
-    keywords = [ "internet" "web" "browser" "incognito" "private" ];
-    startupNotify = false;
-    startupWMClass = "chromium-browser";
-  }
-
   environment.systemPackages = with pkgs; [
     gnome-console
     nautilus
@@ -220,6 +202,23 @@
     vlc
     python3Full
     vscodium
+    (makeDesktopItem {
+      name = "chromium-incognito";
+      desktopName = "Chromium (Incognito)";
+      genericName = "Web Browser";
+      noDisplay = false;
+      comment = "Browse the web in incognito mode";
+      icon = "chromium";
+      dbusActivatable = true;
+      tryExec = "chromium";
+      exec = "chromium --incognito";
+      terminal = false;
+      mimeTypes = [ "application/pdf" "application/rdf+xml" "application/rss+xml" "application/xhtml+xml" "application/xhtml_xml" "application/xml" "image/gif" "image/jpeg" "image/png" "image/webp" "text/html" "text/xml" "x-scheme-handler/http" "x-scheme-handler/https" "x-scheme-handler/webcal" "x-scheme-handler/mailto" "x-scheme-handler/about" "x-scheme-handler/unknown" ];
+      categories = [ "Network" "WebBrowser" ];
+      keywords = [ "internet" "web" "browser" "incognito" "private" ];
+      startupNotify = false;
+      startupWMClass = "chromium-browser";
+    })
   ];
 
   services.xserver.excludePackages = [ pkgs.xterm ]; # XTerm Console Application
