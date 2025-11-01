@@ -202,7 +202,10 @@
     vlc
     python3Full
     vscodium
-    (makeDesktopItem {
+  ];
+
+  environment.etc."xdg/applications/chromium-incognito.desktop".source =
+    (pkgs.makeDesktopItem {
       name = "chromium-incognito";
       desktopName = "Chromium (Incognito)";
       genericName = "Web Browser";
@@ -213,13 +216,15 @@
       tryExec = "chromium";
       exec = "chromium --incognito";
       terminal = false;
-      mimeTypes = [ "application/pdf" "application/rdf+xml" "application/rss+xml" "application/xhtml+xml" "application/xhtml_xml" "application/xml" "image/gif" "image/jpeg" "image/png" "image/webp" "text/html" "text/xml" "x-scheme-handler/http" "x-scheme-handler/https" "x-scheme-handler/webcal" "x-scheme-handler/mailto" "x-scheme-handler/about" "x-scheme-handler/unknown" ];
+      mimeTypes = [
+        "application/pdf"
+        "text/html"
+        "x-scheme-handler/http"
+        "x-scheme-handler/https"
+      ];
       categories = [ "Network" "WebBrowser" ];
       keywords = [ "internet" "web" "browser" "incognito" "private" ];
-      startupNotify = false;
-      startupWMClass = "chromium-browser";
-    })
-  ];
+    }).desktopItem;
 
   services.xserver.excludePackages = [ pkgs.xterm ]; # XTerm Console Application
   
