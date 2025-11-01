@@ -204,27 +204,6 @@
     vscodium
   ];
 
-  environment.etc."xdg/applications/chromium-incognito.desktop".source =
-    "${pkgs.makeDesktopItem {
-      name = "chromium-incognito";
-      desktopName = "Chromium (Incognito)";
-      genericName = "Web Browser";
-      noDisplay = false;
-      comment = "Browse the web in incognito mode";
-      icon = "chromium";
-      tryExec = "chromium";
-      exec = "chromium --incognito";
-      terminal = false;
-      mimeTypes = [
-        "application/pdf"
-        "text/html"
-        "x-scheme-handler/http"
-        "x-scheme-handler/https"
-      ];
-      categories = [ "Network" "WebBrowser" ];
-      keywords = [ "internet" "web" "browser" "incognito" "private" ];
-    }}/share/applications/chromium-incognito.desktop";
-
   services.xserver.excludePackages = [ pkgs.xterm ]; # XTerm Console Application
   
   documentation.nixos.enable = false; # Gnome's NixOS Manual Application
