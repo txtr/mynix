@@ -244,6 +244,12 @@
           "default_launch_container" = "window";
           "url" = "https://www.linkedin.com/jobs/search/?f_EA=true&f_TPR=r86400&f_WT=1%2C3&geoId=90000031&keywords=%20Software%20Engineer&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true&sortBy=DD&spellCorrectionEnabled=true";
         }
+        {
+          "custom_name" = "Youtube Music";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://music.youtube.com/moods_and_genres";
+        }
       ];
     };
   };
