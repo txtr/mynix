@@ -196,7 +196,7 @@
     git
     rclone
     ffmpeg-full
-    chromium.override { enableWideVine = true; }
+    (chromium.override { enableWideVine = true; })
     vlc
     python3Full
     vscodium
