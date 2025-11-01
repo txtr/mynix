@@ -143,6 +143,8 @@
     variant = "";
   };
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1"
+
 
   #------------------------------------------------------------------------------------------------------------------------
   # GNOME
@@ -194,10 +196,10 @@
     git
     rclone
     ffmpeg-full
-    google-chrome
+    chromium.override { enableWideVine = true; }
     vlc
     python3Full
-    vscode
+    vscodium
   ];
 
   services.xserver.excludePackages = [ pkgs.xterm ]; # XTerm Console Application
@@ -222,6 +224,27 @@
         "docker"
       ];
       theme = "robbyrussell";
+    };
+  };
+
+  programs.chromium = {
+    enable = true;
+    homepageLocation = "about:blank";
+    extensions = [
+      "ddkjiahejlhfcafbddmgiahcphecmpfh;https://clients2.google.com/service/update2/crx" # ublock origin lite
+      "ghgabhipcejejjmhhchfonmamedcbeod;https://clients2.google.com/service/update2/crx" # click & clean
+      "nngceckbapebfimnlniiiahkandclblb;https://clients2.google.com/service/update2/crx" # bitwarden
+      "idgadaccgipmpannjkmfddolnnhmeklj;https://clients2.google.com/service/update2/crx" # text blaze
+    ];
+    extraOpts = {
+      "WebAppInstallForceList" = [
+        {
+          "custom_name" = "LinkedIn";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://www.linkedin.com/jobs/search/?f_EA=true&f_TPR=r86400&f_WT=1%2C3&geoId=90000031&keywords=%20Software%20Engineer&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true&sortBy=DD&spellCorrectionEnabled=true";
+        }
+      ];
     };
   };
 
