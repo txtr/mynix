@@ -205,7 +205,7 @@
   ];
 
   environment.etc."xdg/applications/chromium-incognito.desktop".source =
-    (pkgs.makeDesktopItem {
+    "${pkgs.makeDesktopItem {
       name = "chromium-incognito";
       desktopName = "Chromium (Incognito)";
       genericName = "Web Browser";
@@ -224,7 +224,7 @@
       ];
       categories = [ "Network" "WebBrowser" ];
       keywords = [ "internet" "web" "browser" "incognito" "private" ];
-    }).desktopItem;
+    }}/share/applications/chromium-incognito.desktop";
 
   services.xserver.excludePackages = [ pkgs.xterm ]; # XTerm Console Application
   
