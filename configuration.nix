@@ -250,6 +250,42 @@
           "default_launch_container" = "window";
           "url" = "https://music.youtube.com/moods_and_genres";
         }
+        {
+          "custom_name" = "Ente Auth";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://auth.ente.io/";
+        }
+        {
+          "custom_name" = "ChatGPT";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://chatgpt.com/";
+        }
+        {
+          "custom_name" = "Gemini";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://gemini.google.com/app";
+        }
+        {
+          "custom_name" = "Grok";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://grok.com/";
+        }
+        {
+          "custom_name" = "Claude";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://claude.ai/";
+        }
+        {
+          "custom_name" = "Perplexity";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://www.perplexity.ai/";
+        }
       ];
     };
   };
