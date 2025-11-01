@@ -212,7 +212,6 @@
       noDisplay = false;
       comment = "Browse the web in incognito mode";
       icon = "chromium";
-      dbusActivatable = true;
       tryExec = "chromium";
       exec = "chromium --incognito";
       terminal = false;
