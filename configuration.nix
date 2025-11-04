@@ -229,7 +229,9 @@
       theme = "robbyrussell";
     };
   };
-
+  #------------------------------------------------------------------------------------------------------------------------
+  # CHROMIUM
+  #------------------------------------------------------------------------------------------------------------------------
   programs.chromium = {
     enable = true;
     homepageLocation = "about:blank";
@@ -278,16 +280,34 @@
           "url" = "https://grok.com/";
         }
         {
-          "custom_name" = "Claude";
-          "create_desktop_shortcut" = true;
-          "default_launch_container" = "window";
-          "url" = "https://claude.ai/";
-        }
-        {
           "custom_name" = "Perplexity";
           "create_desktop_shortcut" = true;
           "default_launch_container" = "window";
           "url" = "https://www.perplexity.ai/";
+        }
+        {
+          "custom_name" = "Quen";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://chat.qwen.ai/";
+        }
+        {
+          "custom_name" = "Meta AI";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://www.meta.ai/";
+        }
+        {
+          "custom_name" = "Copilot";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://copilot.microsoft.com/";
+        }
+        {
+          "custom_name" = "Granite";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://www.ibm.com/granite/playground";
         }
       ];
     };
