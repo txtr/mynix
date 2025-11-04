@@ -199,10 +199,11 @@
     rclone
     gnome-disk-utility
     ffmpeg-full
-    (chromium.override { enableWideVine = true; })
     vlc
     python3Full
     vscodium
+    pavucontrol
+    (chromium.override { enableWideVine = true; })
   ];
 
   services.xserver.excludePackages = [ pkgs.xterm ]; # XTerm Console Application
