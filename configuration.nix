@@ -197,6 +197,7 @@
     aria2
     git
     rclone
+    gnome-disk-utility
     ffmpeg-full
     (chromium.override { enableWideVine = true; })
     vlc
