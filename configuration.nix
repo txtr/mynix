@@ -241,6 +241,7 @@
       "ghgabhipcejejjmhhchfonmamedcbeod;https://clients2.google.com/service/update2/crx" # click & clean
       "nngceckbapebfimnlniiiahkandclblb;https://clients2.google.com/service/update2/crx" # bitwarden
       "idgadaccgipmpannjkmfddolnnhmeklj;https://clients2.google.com/service/update2/crx" # text blaze
+      "chphlpgkkbolifaimnlloiipkdnihall;https://clients2.google.com/service/update2/crx" # onetab
     ];
     extraOpts = {
       "WebAppInstallForceList" = [
