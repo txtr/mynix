@@ -188,19 +188,16 @@
 
   environment.systemPackages = with pkgs; [
     gnome-console
-    nautilus
-    sushi
-    micro
-    btop
     curl
     wget
     aria2
     git
     rclone
-    gnome-disk-utility
     ffmpeg-full
-    vlc
     python3Full
+    nautilus
+    gnome-disk-utility
+    vlc
     vscodium
     pavucontrol
     (chromium.override { enableWideVine = true; })
@@ -224,8 +221,12 @@
         "vi-mode"
         "git"
         "python"
+        "pip"
         "man"
         "docker"
+        "fzf"
+        "extract"
+        "history"
       ];
       theme = "robbyrussell";
     };
@@ -245,6 +246,18 @@
     ];
     extraOpts = {
       "WebAppInstallForceList" = [
+        {
+          "custom_name" = "Gmail";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://mail.google.com/mail";
+        }
+        {
+          "custom_name" = "Whatsapp";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://web.whatsapp.com/";
+        }
         {
           "custom_name" = "LinkedIn";
           "create_desktop_shortcut" = true;
