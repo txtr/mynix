@@ -311,6 +311,12 @@
           "default_launch_container" = "window";
           "url" = "https://www.ibm.com/granite/playground";
         }
+        {
+          "custom_name" = "Duck.ai";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://https://duck.ai/";
+        }
       ];
     };
   };
