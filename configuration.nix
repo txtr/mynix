@@ -193,6 +193,7 @@
     aria2
     git
     rclone
+    fzf
     ffmpeg-full
     python3Full
     nautilus
