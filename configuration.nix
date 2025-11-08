@@ -204,6 +204,7 @@
     vscodium
     pavucontrol
     (chromium.override { enableWideVine = true; })
+    neovim
   ];
 
   services.xserver.excludePackages = [ pkgs.xterm ]; # XTerm Console Application
