@@ -110,9 +110,11 @@
   #------------------------------------------------------------------------------------------------------------------------
   # AUTO UPGRADE
   #------------------------------------------------------------------------------------------------------------------------
-  system.autoUpgrade.channel = "https://channels.nixos.org/nixos-25.05";
-  system.autoUpgrade.enable = false;
-  system.autoUpgrade.allowReboot = false;
+  system.autoUpgrade = {
+    enable = false;
+    channel = "https://channels.nixos.org/nixos-25.05";
+    allowReboot = true;
+  };
 
   #------------------------------------------------------------------------------------------------------------------------
   # USERS
