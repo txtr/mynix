@@ -278,41 +278,14 @@
           "default_launch_container" = "window";
           "url" = "https://auth.ente.io/";
         }
-        {
-          "custom_name" = "ChatGPT";
-          "create_desktop_shortcut" = true;
-          "default_launch_container" = "window";
-          "url" = "https://chatgpt.com/";
-        }
+        ################################################################################
+        ####    LLMs    ################################################################
+        ################################################################################
         {
           "custom_name" = "Gemini";
           "create_desktop_shortcut" = true;
           "default_launch_container" = "window";
           "url" = "https://gemini.google.com/app";
-        }
-        {
-          "custom_name" = "Grok";
-          "create_desktop_shortcut" = true;
-          "default_launch_container" = "window";
-          "url" = "https://grok.com/";
-        }
-        {
-          "custom_name" = "Perplexity";
-          "create_desktop_shortcut" = true;
-          "default_launch_container" = "window";
-          "url" = "https://www.perplexity.ai/";
-        }
-        {
-          "custom_name" = "Quen";
-          "create_desktop_shortcut" = true;
-          "default_launch_container" = "window";
-          "url" = "https://chat.qwen.ai/";
-        }
-        {
-          "custom_name" = "Meta AI";
-          "create_desktop_shortcut" = true;
-          "default_launch_container" = "window";
-          "url" = "https://www.meta.ai/";
         }
         {
           "custom_name" = "Copilot";
@@ -321,10 +294,82 @@
           "url" = "https://copilot.microsoft.com/";
         }
         {
+          "custom_name" = "Quen";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://chat.qwen.ai/";
+        }
+        {
+          "custom_name" = "Z.ai";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://chat.z.ai/";
+        }
+        {
+          "custom_name" = "Grok";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://grok.com/";
+        }
+        {
+          "custom_name" = "ChatGPT";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://chatgpt.com/";
+        }
+        {
+          "custom_name" = "Mistral";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://chat.mistral.ai/";
+        }
+        {
+          "custom_name" = "Meta AI";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://www.meta.ai/";
+        }
+        {
+          "custom_name" = "Apertus";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://publicai.co/chat/";
+        }
+        {
           "custom_name" = "Granite";
           "create_desktop_shortcut" = true;
           "default_launch_container" = "window";
           "url" = "https://www.ibm.com/granite/playground";
+        }
+        {
+          "custom_name" = "Ernie";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://ernie.baidu.com/";
+        }
+        {
+          "custom_name" = "Solar";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://console.upstage.ai/playground/chat";
+        }
+        {
+          "custom_name" = "Reka";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://app.reka.ai/";
+        }
+        {
+          "custom_name" = "Perplexity";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://www.perplexity.ai/";
+        }
+        {
+          "custom_name" = "LongCat";
+          "create_desktop_shortcut" = true;
+          "default_launch_container" = "window";
+          "url" = "https://longcat.chat/";
         }
         {
           "custom_name" = "Duck.ai";
