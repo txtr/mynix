@@ -198,6 +198,7 @@
 
   environment.systemPackages = with pkgs; [
     alacritty
+    gcc
     curl
     wget
     aria2
