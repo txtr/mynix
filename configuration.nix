@@ -201,7 +201,6 @@
     nautilus
     gnome-disk-utility
     vlc
-    vscodium
     pavucontrol
     (chromium.override { enableWideVine = true; })
     neovim
