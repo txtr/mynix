@@ -188,7 +188,6 @@
   #------------------------------------------------------------------------------------------------------------------------
 
   environment.systemPackages = with pkgs; [
-    gnome-console
     alacritty
     curl
     wget
