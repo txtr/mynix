@@ -1,6 +1,6 @@
 # Help is available in the configuration.nix(5) man page and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, makeDesktopItem, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   
@@ -121,6 +121,7 @@
     ];
 
     packages = with pkgs; [
+      # Add user-level packages
     ];
 
     openssh.authorizedKeys.keys = [
