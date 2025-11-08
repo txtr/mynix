@@ -213,6 +213,7 @@
     vlc
     pavucontrol
     (chromium.override { enableWideVine = true; })
+    vscodium
     neovim
   ];
 
