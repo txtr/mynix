@@ -150,7 +150,8 @@
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
+  xdg.terminal-exec.enable = true;
+  xdg.terminal-exec.default = [ "alacritty.desktop" ];
 
   #------------------------------------------------------------------------------------------------------------------------
   # GNOME
