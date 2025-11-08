@@ -1,5 +1,8 @@
 #!/bin/sh
 
+sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz home-manager
+sudo nix-channel --update
+
 echo "Checking internet connection..."
 if ping -q -c 1 -W 2 8.8.8.8 >/dev/null; then
     echo "Internet connection detected."
