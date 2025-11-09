@@ -259,7 +259,12 @@
       "chphlpgkkbolifaimnlloiipkdnihall;https://clients2.google.com/service/update2/crx" # onetab
     ];
     extraOpts = {
-      "WebAppInstallForceList" = [
+        "BrowserSignin" = 0;
+        "SyncDisabled" = true;
+        "PasswordManagerEnabled" = false;
+        "SpellcheckEnabled" = false;
+        "SpellcheckLanguage" = [ "en-US" ];
+        "WebAppInstallForceList" = [
         {
           "custom_name" = "Gmail";
           "create_desktop_shortcut" = true;
