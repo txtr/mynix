@@ -214,7 +214,7 @@
     pavucontrol
     (chromium.override { enableWideVine = true; })
     vscodium
-    neovim
+    gnomeExtensions.tiling-shell
   ];
 
   services.xserver.excludePackages = [ pkgs.xterm ]; # XTerm Console Application
