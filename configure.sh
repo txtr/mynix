@@ -15,6 +15,23 @@ else
 fi
 
 sudo cp ./wallpaper.jpeg /wallpaper.jpeg
-
-dconf load / < ./dconf
 cp ./.zshrc ~/.zshrc
+
+while true; do
+    read -p "Apply dconf settings? [Y/n] " yn
+    case "$yn" in
+        "" | [Yy]* ) 
+            echo "Applying dconf settings..."
+            dconf load / < ./dconf
+            echo "dconf settings applied!"
+            break
+            ;;
+        [Nn]* )
+            echo "dconf load skipped."
+            break
+            ;;
+        * ) 
+            echo "Please answer Y or n";;
+    esac
+done
+
