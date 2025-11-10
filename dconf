@@ -5,29 +5,6 @@ index-single-directories=@as []
 [org/gnome/Console]
 last-window-maximised=true
 
-[org/gnome/desktop/app-folders]
-folder-children=['YaST', 'Pardus', 'System', 'Utilities']
-
-[org/gnome/desktop/app-folders/folders/Pardus]
-categories=['X-Pardus-Apps']
-name='X-Pardus-Apps.directory'
-translate=false
-
-[org/gnome/desktop/app-folders/folders/YaST]
-categories=['X-SuSE-YaST']
-name='suse-yast.directory'
-translate=false
-
-[org/gnome/desktop/app-folders/folders/System]
-apps=[]
-name='X-GNOME-Shell-System.directory'
-translate=false
-
-[org/gnome/desktop/app-folders/folders/Utilities]
-apps=[]
-name='X-GNOME-Shell-Utilities.directory'
-translate=false
-
 [org/gnome/desktop/background]
 color-shading-type='solid'
 picture-options='zoom'
