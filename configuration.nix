@@ -198,14 +198,11 @@
 
   environment.systemPackages = with pkgs; [
     alacritty
-    gcc
     curl
     wget
     aria2
     git
     rclone
-    fzf
-    ripgrep
     ffmpeg-full
     python3Full
     nautilus
