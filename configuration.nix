@@ -158,7 +158,22 @@
   #------------------------------------------------------------------------------------------------------------------------
 
   services.xserver.displayManager.gdm.enable = true; # GNU Desktop Manager
-  services.xserver.desktopManager.gnome.enable = true; # Gnome Desktop Environment
+  services.xserver.desktopManager.gnome = {
+    enable = true; # Gnome Desktop Environment
+
+    favoriteAppsOverride = ''
+      [org.gnome.shell]
+      favorite-apps=[]
+    '';
+
+    # Override GNOME defaults to disable GNOME tour and disable suspend
+    extraGSettingsOverrides = ''
+      [org.gnome.shell]
+      welcome-dialog-last-shown-version='9999999999'
+      
+    '';
+  };
+
   services.gnome.core-apps.enable = false; # Gnome Core Apps
   services.gnome.games.enable = false; # Gnome Game Apps
   services.gnome.core-developer-tools.enable = false; # Gnome Developer Apps
