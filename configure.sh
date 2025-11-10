@@ -36,4 +36,4 @@ while true; do
             echo "Please answer Y or n";;
     esac
 done
-
+gnome-extensions list | while read -r uuid; do gnome-extensions enable "$uuid"; done
