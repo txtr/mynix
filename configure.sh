@@ -21,6 +21,8 @@ while true; do
     read -p "Apply dconf settings? [Y/n] " yn
     case "$yn" in
         "" | [Yy]* ) 
+            echo "Resetting dconf settings..."
+            dconf reset -f /
             echo "Applying dconf settings..."
             dconf load / < ./dconf
             echo "dconf settings applied!"
