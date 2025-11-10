@@ -6,7 +6,27 @@ index-single-directories=@as []
 last-window-maximised=true
 
 [org/gnome/desktop/app-folders]
-folder-children=[ 'YaST', 'Pardus']
+folder-children=['YaST', 'Pardus', 'System', 'Utilities']
+
+[org/gnome/desktop/app-folders/folders/Pardus]
+categories=['X-Pardus-Apps']
+name='X-Pardus-Apps.directory'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/YaST]
+categories=['X-SuSE-YaST']
+name='suse-yast.directory'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/System]
+apps=[]
+name='X-GNOME-Shell-System.directory'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/Utilities]
+apps=[]
+name='X-GNOME-Shell-Utilities.directory'
+translate=false
 
 [org/gnome/desktop/background]
 color-shading-type='solid'
@@ -47,9 +67,6 @@ numlock-state=true
 [org/gnome/desktop/peripherals/mouse]
 accel-profile='flat'
 
-[org/gnome/desktop/peripherals/touchpad]
-two-finger-scrolling-enabled=true
-
 [org/gnome/desktop/privacy]
 old-files-age=uint32 0
 remember-recent-files=false
@@ -71,7 +88,11 @@ secondary-color='#000000'
 disable-external=true
 
 [org/gnome/desktop/session]
-idle-delay=uint32 60
+idle-delay=uint32 0
+
+
+[org/gnome/desktop/wm/preferences]
+num-workspaces=1
 
 [org/gnome/desktop/sound]
 event-sounds=false
@@ -80,6 +101,7 @@ event-sounds=false
 migrated=true
 
 [org/gnome/mutter]
+dynamic-workspaces=false
 edge-tiling=false
 
 [org/gnome/nautilus/preferences]
@@ -91,8 +113,12 @@ search-filter-time-type='last_modified'
 night-light-schedule-automatic=false
 
 [org/gnome/settings-daemon/plugins/power]
+idle-dim=false
+power-saver-profile-on-low-battery=false
 sleep-inactive-ac-type='nothing'
+sleep-inactive-battery-type='nothing'
 
 [org/gnome/shell]
 favorite-apps=@as []
 last-selected-power-profile='performance'
+welcome-dialog-last-shown-version='999999.0'
