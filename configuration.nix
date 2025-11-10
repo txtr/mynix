@@ -104,7 +104,7 @@
   #------------------------------------------------------------------------------------------------------------------------
   # FONTS
   #------------------------------------------------------------------------------------------------------------------------
-  fonts.packages = [] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.enableDefaultPackages;
 
 
   #------------------------------------------------------------------------------------------------------------------------
@@ -151,18 +151,17 @@
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  xdg.terminal-exec = {
-    enable = true;
-    settings.default = [ "alacritty.desktop" ];
-  };
-
+  xdg.terminal-exec.enable = true;
+  
   #------------------------------------------------------------------------------------------------------------------------
   # GNOME
   #------------------------------------------------------------------------------------------------------------------------
+
   services.xserver.displayManager.gdm.enable = true; # GNU Desktop Manager
   services.xserver.desktopManager.gnome.enable = true; # Gnome Desktop Environment
   services.gnome.core-apps.enable = false; # Gnome Core Apps
   services.gnome.games.enable = false; # Gnome Game Apps
+  services.gnome.core-developer-tools.enable = false; # Gnome Developer Apps
   services.gnome.localsearch.enable = false; # Indexing via localsearch
   services.gnome.tinysparql.enable = false; # Indexing via tinysparql
   
@@ -197,7 +196,7 @@
   #------------------------------------------------------------------------------------------------------------------------
 
   environment.systemPackages = with pkgs; [
-    alacritty
+    gnome-console
     curl
     wget
     aria2
@@ -210,8 +209,9 @@
     vlc
     pavucontrol
     (chromium.override { enableWideVine = true; })
-    vscodium
+    vscode
     gnomeExtensions.tiling-shell
+    gnomeExtensions.just-perfection
   ];
 
   services.xserver.excludePackages = [ pkgs.xterm ]; # XTerm Console Application
@@ -227,27 +227,25 @@
     ohMyZsh = {
       enable = true;
       plugins = [
-        "sudo"
-        "systemadmin"
-        "vi-mode"
-        "git"
-        "python"
-        "pip"
-        "man"
         "docker"
-        "fzf"
-        "extract"
+        "git"
         "history"
+        "man"
+        "pip"
+        "python"
+        "systemadmin"
+        "sudo"
       ];
       theme = "robbyrussell";
     };
   };
+
   #------------------------------------------------------------------------------------------------------------------------
   # CHROMIUM
   #------------------------------------------------------------------------------------------------------------------------
   programs.chromium = {
     enable = true;
-    homepageLocation = "about:blank";
+    homepageLocation = "chrome://apps";
     extensions = [
       "ddkjiahejlhfcafbddmgiahcphecmpfh;https://clients2.google.com/service/update2/crx" # ublock origin lite
       "ghgabhipcejejjmhhchfonmamedcbeod;https://clients2.google.com/service/update2/crx" # click & clean
