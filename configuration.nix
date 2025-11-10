@@ -170,7 +170,105 @@
     extraGSettingsOverrides = ''
       [org.gnome.shell]
       welcome-dialog-last-shown-version='9999999999'
+
+      [org/freedesktop/tracker/miner/files]
+      index-recursive-directories=@as []
+      index-single-directories=@as []
       
+      [org/gnome/Console]
+      last-window-maximised=true
+      
+      [org/gnome/desktop/app-folders]
+      folder-children=[ 'YaST', 'Pardus']
+      
+      [org/gnome/desktop/background]
+      color-shading-type='solid'
+      picture-options='zoom'
+      picture-uri='file:///wallpaper.jpeg'
+      picture-uri-dark='file:///wallpaper.jpeg'
+      primary-color='#555555'
+      secondary-color='#000000'
+      
+      [org/gnome/desktop/break-reminders/eyesight]
+      play-sound=true
+      
+      [org/gnome/desktop/break-reminders/movement]
+      duration-seconds=uint32 300
+      interval-seconds=uint32 1800
+      play-sound=true
+      
+      [org/gnome/desktop/datetime]
+      automatic-timezone=false
+      
+      [org/gnome/desktop/input-sources]
+      sources=[('xkb', 'us')]
+      xkb-options=@as []
+      
+      [org/gnome/desktop/interface]
+      clock-show-seconds=false
+      clock-show-weekday=true
+      color-scheme='prefer-dark'
+      enable-animations=false
+      enable-hot-corners=false
+      
+      [org/gnome/desktop/notifications]
+      show-in-lock-screen=false
+      
+      [org/gnome/desktop/peripherals/keyboard]
+      numlock-state=true
+      
+      [org/gnome/desktop/peripherals/mouse]
+      accel-profile='flat'
+      
+      [org/gnome/desktop/peripherals/touchpad]
+      two-finger-scrolling-enabled=true
+      
+      [org/gnome/desktop/privacy]
+      old-files-age=uint32 0
+      remember-recent-files=false
+      remove-old-temp-files=true
+      remove-old-trash-files=true
+      
+      [org/gnome/desktop/screen-time-limits]
+      daily-limit-enabled=false
+      history-enabled=false
+      
+      [org/gnome/desktop/screensaver]
+      color-shading-type='solid'
+      lock-enabled=false
+      picture-options='zoom'
+      primary-color='#000000'
+      secondary-color='#000000'
+      
+      [org/gnome/desktop/search-providers]
+      disable-external=true
+      
+      [org/gnome/desktop/session]
+      idle-delay=uint32 60
+      
+      [org/gnome/desktop/sound]
+      event-sounds=false
+      
+      [org/gnome/evolution-data-server]
+      migrated=true
+      
+      [org/gnome/mutter]
+      edge-tiling=false
+      
+      [org/gnome/nautilus/preferences]
+      default-folder-viewer='icon-view'
+      migrated-gtk-settings=true
+      search-filter-time-type='last_modified'
+      
+      [org/gnome/settings-daemon/plugins/color]
+      night-light-schedule-automatic=false
+      
+      [org/gnome/settings-daemon/plugins/power]
+      sleep-inactive-ac-type='nothing'
+      
+      [org/gnome/shell]
+      favorite-apps=@as []
+      last-selected-power-profile='performance'
     '';
   };
 
