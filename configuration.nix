@@ -4,4 +4,6 @@
   imports = [
     ./base.nix
   ];
+
+  networking.hostName = "hera";
 }
