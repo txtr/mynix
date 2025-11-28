@@ -307,7 +307,7 @@
           "url" = "https://copilot.microsoft.com/";
         }
         {
-          "custom_name" = "Quen";
+          "custom_name" = "Qwen";
           "create_desktop_shortcut" = true;
           "default_launch_container" = "window";
           "url" = "https://chat.qwen.ai/";
