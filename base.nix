@@ -20,7 +20,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 
 
   
@@ -112,7 +112,7 @@
   #------------------------------------------------------------------------------------------------------------------------
   system.autoUpgrade = {
     enable = false;
-    channel = "https://channels.nixos.org/nixos-25.05";
+    channel = "https://channels.nixos.org/nixos-25.11";
     allowReboot = true;
   };
 
@@ -157,8 +157,8 @@
   # GNOME
   #------------------------------------------------------------------------------------------------------------------------
 
-  services.xserver.displayManager.gdm.enable = true; # GNU Desktop Manager
-  services.xserver.desktopManager.gnome.enable = true; # Gnome Desktop Environment
+  services.displayManager.gdm.enable = true; # GNU Desktop Manager
+  services.displayManager.gnome.enable = true; # Gnome Desktop Environment
 
   services.gnome.core-apps.enable = false; # Gnome Core Apps
   services.gnome.games.enable = false; # Gnome Game Apps
@@ -204,7 +204,7 @@
     git
     rclone
     ffmpeg-full
-    python3Full
+    python312
     nautilus
     gnome-disk-utility
     vlc
@@ -240,6 +240,9 @@
       theme = "robbyrussell";
     };
   };
+
+  services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "client";
 
   #------------------------------------------------------------------------------------------------------------------------
   # CHROMIUM
@@ -307,7 +310,7 @@
           "url" = "https://copilot.microsoft.com/";
         }
         {
-          "custom_name" = "Quen";
+          "custom_name" = "Qwen";
           "create_desktop_shortcut" = true;
           "default_launch_container" = "window";
           "url" = "https://chat.qwen.ai/";
