@@ -158,7 +158,7 @@
   #------------------------------------------------------------------------------------------------------------------------
 
   services.displayManager.gdm.enable = true; # GNU Desktop Manager
-  services.displayManager.gnome.enable = true; # Gnome Desktop Environment
+  services.desktopManager.gnome.enable = true; # Gnome Desktop Environment
 
   services.gnome.core-apps.enable = false; # Gnome Core Apps
   services.gnome.games.enable = false; # Gnome Game Apps
