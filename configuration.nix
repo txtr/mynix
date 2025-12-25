@@ -9,13 +9,8 @@
 
   hardware.graphics.extraPackages =  with pkgs; [
     rocmPackages.clr.icd # OpenCL
-    # DEPRICATED:: pkgs.amdvlk # Vulkan
   ];
-  # DEPRICATED:: hardware.graphics.extraPackages32 = [ pkgs.driversi686Linux.amdvlk ]; # Vulkan support for 32-bit applications
   hardware.amdgpu.opencl.enable = true;
-  
-  
-
   
   environment.variables.ROC_ENABLE_PRE_VEGA = "1"; # Reenable OpenCL on Polaris-based cards above ROCm 4.5
   environment.variables.AMD_VULKAN_ICD = "RADV"; # Force RADV
@@ -28,7 +23,7 @@
     # "amdgpu-pro"
   ];
 
-  hardware.amdgpu.overdrive.ppfeaturemask = 0xffffffff;
+  hardware.amdgpu.overdrive.ppfeaturemask = "0xffffffff";
   hardware.amdgpu.overdrive.enable = true;
   services.lact.enable = true;
 
