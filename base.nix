@@ -177,9 +177,6 @@
   programs.appimage.binfmt = true;
 
   services.flatpak.enable = true; # Flatpak
-  
-
-  
 
   #------------------------------------------------------------------------------------------------------------------------
   # SSH
@@ -256,6 +253,7 @@
       "nngceckbapebfimnlniiiahkandclblb;https://clients2.google.com/service/update2/crx" # bitwarden
       "idgadaccgipmpannjkmfddolnnhmeklj;https://clients2.google.com/service/update2/crx" # text blaze
       "chphlpgkkbolifaimnlloiipkdnihall;https://clients2.google.com/service/update2/crx" # onetab
+      "ldgfbffkinooeloadekpmfoklnobpien;https://clients2.google.com/service/update2/crx" # raindrop.io
     ];
     extraOpts = {
         "BrowserSignin" = 0;
@@ -346,12 +344,6 @@
           "url" = "https://www.meta.ai/";
         }
         {
-          "custom_name" = "Apertus";
-          "create_desktop_shortcut" = true;
-          "default_launch_container" = "window";
-          "url" = "https://publicai.co/chat/";
-        }
-        {
           "custom_name" = "Granite";
           "create_desktop_shortcut" = true;
           "default_launch_container" = "window";
@@ -364,28 +356,10 @@
           "url" = "https://ernie.baidu.com/";
         }
         {
-          "custom_name" = "Solar";
-          "create_desktop_shortcut" = true;
-          "default_launch_container" = "window";
-          "url" = "https://console.upstage.ai/playground/chat";
-        }
-        {
-          "custom_name" = "Reka";
-          "create_desktop_shortcut" = true;
-          "default_launch_container" = "window";
-          "url" = "https://app.reka.ai/";
-        }
-        {
           "custom_name" = "Perplexity";
           "create_desktop_shortcut" = true;
           "default_launch_container" = "window";
           "url" = "https://www.perplexity.ai/";
-        }
-        {
-          "custom_name" = "LongCat";
-          "create_desktop_shortcut" = true;
-          "default_launch_container" = "window";
-          "url" = "https://longcat.chat/";
         }
         {
           "custom_name" = "Duck.ai";
