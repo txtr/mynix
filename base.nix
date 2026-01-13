@@ -74,7 +74,7 @@
   # BLUETOOTH
   #------------------------------------------------------------------------------------------------------------------------
   hardware.bluetooth.enable = true;
-  systemd.services.bluetooth.enable = lib.mkForce false;
+  systemd.services.bluetooth.enable = lib.mkForce true;
   
   #------------------------------------------------------------------------------------------------------------------------
   # MISC. HARDWARE
@@ -237,9 +237,6 @@
       theme = "robbyrussell";
     };
   };
-
-  services.tailscale.enable = true;
-  services.tailscale.useRoutingFeatures = "client";
 
   #------------------------------------------------------------------------------------------------------------------------
   # CHROMIUM
